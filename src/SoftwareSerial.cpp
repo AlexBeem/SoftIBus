@@ -223,6 +223,16 @@ inline void SoftwareSerial::handle_interrupt()
     active_object->recv();
   }
 }
+#if defined(INT0_vect)
+ISR(INT0_vect)
+{
+  SoftwareSerial::handle_interrupt();
+}
+#if defined(INT1_vect)
+ISR(INT1_vect)
+{
+  SoftwareSerial::handle_interrupt();
+}
 /*
 #if defined(PCINT0_vect)
 ISR(PCINT0_vect)
